@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
-    private double saldo = 0;
+    private double balance = 0;
     private static double expenses = 0;
     private static double income = 0;
 
@@ -70,9 +70,9 @@ public class MainController implements Initializable {
 
 
 
-    public void ingreso(ActionEvent actionEvent) throws IOException {
-        saldo += Double.parseDouble(quantityTF.getText());
-        Transaction transaction = new Transaction(infoTF.getText(), getDate(), "+ " + quantityTF.getText(), round(saldo));
+    public void deposit(ActionEvent actionEvent) throws IOException {
+        balance += Double.parseDouble(quantityTF.getText());
+        Transaction transaction = new Transaction(infoTF.getText(), getDate(), "+ " + quantityTF.getText(), round(balance));
         table.getItems().add(transaction);
         income += Double.parseDouble(quantityTF.getText());
         transactionList.getList()[transactionList.ocupation] = transaction;
@@ -82,9 +82,9 @@ public class MainController implements Initializable {
         printPieChart();
     }
 
-    public void gasto(ActionEvent actionEvent) throws IOException {
-        saldo -= Double.parseDouble(quantityTF.getText());
-        Transaction transaction = new Transaction(infoTF.getText(), getDate(), "- " + quantityTF.getText(), round(saldo));
+    public void withdraw(ActionEvent actionEvent) throws IOException {
+        balance -= Double.parseDouble(quantityTF.getText());
+        Transaction transaction = new Transaction(infoTF.getText(), getDate(), "- " + quantityTF.getText(), round(balance));
         table.getItems().add(transaction);
         expenses += Double.parseDouble(quantityTF.getText());
         transactionList.getList()[transactionList.ocupation] = transaction;
@@ -107,7 +107,7 @@ public class MainController implements Initializable {
             while (line != null) {
                 String[] parameter = line.split(";");
                 Transaction transaction = new Transaction(parameter[0], parameter[1], parameter[2], Double.parseDouble(parameter[3]));
-                saldo = Double.parseDouble(parameter[3]);
+                balance = Double.parseDouble(parameter[3]);
                 expenses = Double.parseDouble(parameter[4]);
                 income = Double.parseDouble(parameter[5]);
                 transactionList.getList()[i] = transaction;
@@ -154,7 +154,7 @@ public class MainController implements Initializable {
     }
 
     public void printBalance() {
-        balanceLabel.setText(Double.toString(round(saldo)) + " €");
+        balanceLabel.setText(Double.toString(round(balance)) + " €");
     }
 
     public void printPieChart() {

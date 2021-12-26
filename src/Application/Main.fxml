@@ -71,8 +71,8 @@
                   <TextField fx:id="quantityTF" />
                </children>
             </VBox>
-            <Button fx:id="depositButton" layoutX="60.0" layoutY="193.0" mnemonicParsing="false" onAction="#ingreso" prefHeight="40.0" prefWidth="105.0" text="Deposit" />
-            <Button fx:id="withdrawButton" layoutX="216.0" layoutY="193.0" mnemonicParsing="false" onAction="#gasto" prefHeight="40.0" prefWidth="105.0" text="Withdraw" />
+            <Button fx:id="depositButton" layoutX="60.0" layoutY="193.0" mnemonicParsing="false" onAction="#deposit" prefHeight="40.0" prefWidth="105.0" text="Deposit" />
+            <Button fx:id="withdrawButton" layoutX="216.0" layoutY="193.0" mnemonicParsing="false" onAction="#withdraw" prefHeight="40.0" prefWidth="105.0" text="Withdraw" />
             <TableView fx:id="table" layoutX="390.0" layoutY="92.0" prefHeight="522.0" prefWidth="839.0">
               <columns>
                 <TableColumn fx:id="infoCol" prefWidth="385.0" text="Info" />
